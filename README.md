@@ -30,14 +30,10 @@ This is the frontend application for the Simple Survey System. It allows users t
 git clone https://github.com/YOUR_USERNAME/simple-survey-client.git
 cd simple-survey-client
 2. Install dependencies
-bash
-Copy
-Edit
+
 npm install
 3. Start the development server
-bash
-Copy
-Edit
+
 npm start
 This will launch the React app in your browser at http://localhost:3000.
 
@@ -57,8 +53,7 @@ GitHub Pages
 
 📂 Project Structure
 java
-Copy
-Edit
+
 simple-survey-client/
 ├── public/
 │   └── index.html
