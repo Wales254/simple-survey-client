@@ -58,7 +58,9 @@ This project can be deployed using services like:
 - GitHub Pages  
 
 ### Live Demo  
-👉 Simple Survey Client Live at simple-survey-client.vercel.app
+👉 Simple Survey Client Live [(simple-survey-client.vercel.app in Bing)](https://www.bing.com/search?q="https%3A%2F%2Fsimple-survey-client.vercel.app%2F")
+
+---
 
 ## 📂 Project Structure
 ```
