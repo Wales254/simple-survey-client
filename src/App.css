@@ -1,72 +1,222 @@
-/* App.css */
+/* Base layout */
 body, html, #root {
   height: 100%;
   margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: Arial, sans-serif;
+  font-family: 'Inter', Arial, sans-serif;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
+/* Light mode */
+.App.light {
+  background-color: #f0f2f5;
+  color: #333;
+}
+
+.App.light .container-center {
+  background: linear-gradient(135deg, #004aad, #00bfa5); /* Brand colors */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+/* Dark mode */
+.App.dark {
+  background-color: #121212;
+  color: #e5e7eb;
+}
+
+.App.dark .container-center {
+  background: linear-gradient(135deg, #002b5c, #00695c); /* Darker brand tones */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.6);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 8px rgba(0, 191, 165, 0.7), 0 0 16px rgba(0, 191, 165, 0.5); }
+  50% { box-shadow: 0 0 14px rgba(0, 191, 165, 0.9), 0 0 28px rgba(0, 191, 165, 0.6); }
+  100% { box-shadow: 0 0 8px rgba(0, 191, 165, 0.7), 0 0 16px rgba(0, 191, 165, 0.5); }
+}
+
+/* Form container */
 .container-center {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;  /* Align items to the top */
-  flex-direction: column;
-  background-color: #f7f7f7;
-  padding: 15px; /* Reduced padding */
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  border-radius: 16px;
   width: 100%;
-  max-width: 400px;  /* Reduced width */
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeIn 0.6s ease-out;
 }
 
+/* Heading */
 h1 {
+  margin-bottom: 1.5rem;
+  font-size: 1.8em;
   text-align: center;
-  margin-bottom: 10px; /* Reduced margin */
-  font-size: 1.5em;  /* Reduced font size */
 }
 
-form {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;  /* Center form elements */
-}
-
+/* Inputs */
 input, select, textarea {
   width: 100%;
-  padding: 8px; /* Reduced padding */
-  margin: 8px 0;  /* Reduced margin */
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 1em;  /* Reduced font size */
+  padding: 12px;
+  margin-bottom: 16px;
+  border: 1px solid #374151;
+  border-radius: 8px;
+  font-size: 1em;
+  transition: border-color 0.2s, box-shadow 0.2s, background-color 0.3s ease, color 0.3s ease;
 }
 
+.App.light input,
+.App.light select,
+.App.light textarea {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #333;
+}
+
+.App.dark input,
+.App.dark select,
+.App.dark textarea {
+  background-color: rgba(45, 45, 45, 0.8);
+  color: #f9fafb;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #00bfa5;
+  box-shadow: 0 0 0 2px rgba(0, 191, 165, 0.4);
+  outline: none;
+}
+
+/* Buttons */
 button {
-  padding: 8px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 5px;
+  padding: 12px;
+  border-radius: 8px;
   cursor: pointer;
-  width: 100%;
-  margin-top: 10px;
-  font-size: 1em;  /* Reduced font size */
+  font-size: 1em;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.1s;
+}
+
+.App.light button {
+  background-color: #004aad;
+  color: white;
+}
+
+.App.dark button {
+  background-color: #00bfa5;
+  color: white;
 }
 
 button:hover {
-  background-color: #45a049;
+  opacity: 0.9;
+  transform: translateY(-2px);
 }
 
-p {
-  text-align: center;
-  font-size: 1em; /* Reduced font size */
-  margin-top: 10px;
-  color: #333;
+/* Toggle button */
+.toggle-btn {
+  margin-top: 1rem;
+  background-color: transparent;
+  border: 1px solid currentColor;
+  animation: slideIn 0.6s ease-out 0.3s both;
+  transition: box-shadow 0.3s ease, color 0.3s ease;
 }
-body, html {
-  height: 100%;
-  margin: 0;
-  background-color: #f0f2f5; /* light blue background */
+
+.App.dark .toggle-btn {
+  color: #ffffff; /* Fixed contrast */
+  border-color: #00bfa5;
+  animation: slideIn 0.6s ease-out 0.3s both, pulseGlow 2s infinite;
+}
+
+.App.dark .toggle-btn:hover {
+  box-shadow: 0 0 16px rgba(0, 191, 165, 1),
+              0 0 32px rgba(0, 191, 165, 0.8);
+}
+
+/* 📱 Mobile responsiveness */
+@media (max-width: 600px) {
+  .container-center {
+    padding: 1rem;
+    max-width: 95%;
+    border-radius: 12px;
+  }
+  h1 {
+    font-size: 1.4em;
+  }
+  input, select, textarea {
+    font-size: 0.95em;
+    padding: 10px;
+  }
+  button, .toggle-btn {
+    font-size: 0.95em;
+    padding: 10px;
+    min-height: 44px; /* Touch-friendly */
+    margin-top: 0.8rem;
+  }
+}
+
+/* Base layout remains the same as before */
+
+/* Tablet responsiveness */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .container-center {
+    padding: 1.5rem;          /* Slightly reduced padding */
+    max-width: 85%;           /* Wider than mobile, narrower than desktop */
+    border-radius: 14px;
+  }
+
+  h1 {
+    font-size: 1.6em;         /* Adjust heading size for tablets */
+  }
+
+  input, select, textarea {
+    font-size: 1em;           /* Keep text readable */
+    padding: 12px;            /* Comfortable tap size */
+  }
+
+  button, .toggle-btn {
+    font-size: 1em;
+    padding: 12px;
+    min-height: 48px;         /* Larger tap area for tablets */
+    margin-top: 1rem;
+  }
+}
+
+/* Mobile responsiveness (already included) */
+@media (max-width: 600px) {
+  .container-center {
+    padding: 1rem;
+    max-width: 95%;
+    border-radius: 12px;
+  }
+  h1 {
+    font-size: 1.4em;
+  }
+  input, select, textarea {
+    font-size: 0.95em;
+    padding: 10px;
+  }
+  button, .toggle-btn {
+    font-size: 0.95em;
+    padding: 10px;
+    min-height: 44px;
+    margin-top: 0.8rem;
+  }
 }
