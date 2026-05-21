@@ -58,7 +58,7 @@ This project can be deployed using services like:
 - GitHub Pages  
 
 ### Live Demo  
-👉 Simple Survey Client Live [(simple-survey-client.vercel.app/)] 
+👉 AT: https://simple-survey-client-kappa.vercel.app/ 
 
 ---
 
